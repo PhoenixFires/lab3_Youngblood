@@ -120,16 +120,18 @@ object Lab3 extends jsy.util.JsyApplication {
     def eToB(e: Expr): Boolean = toBoolean(eval(env, e))
     def eToVal(e: Expr): Expr = eval(env, e)
     e match {
-      /* Base Cases */
+      /*----Base Cases----*/
       case _ if isValue(e) => e
       case Var(x) => get(env, x)
       
-      /* Inductive Cases */
+      /*----Inductive Cases----*/
       case Print(e1) => println(pretty(eval(env, e1))); Undefined
       
+      //------------
       case Unary(Neg, e1) => N(- eToN(e1))
       case Unary(Not, e1) => B(! eToB(e1))
       
+      //------------
       case Binary(Plus, e1, e2) => (eToVal(e1), eToVal(e2)) match {
         case (S(s1), v2) => S(s1 + toStr(v2))
         case (v1, S(s2)) => S(toStr(v1) + s2)
@@ -138,35 +140,33 @@ object Lab3 extends jsy.util.JsyApplication {
       case Binary(Minus, e1, e2) => N(eToN(e1) - eToN(e2))
       case Binary(Times, e1, e2) => N(eToN(e1) * eToN(e2))
       case Binary(Div, e1, e2) => N(eToN(e1) / eToN(e2))
-      
-      case Binary(bop @ (Eq | Ne), e1, e2) => e1 match { //throw new UnsupportedOperationException 
-        case Function(_, x, e) => DynamicTypeError(e); throw new UnsupportedOperationException
+      case Binary(bop @ (Eq | Ne), e1, e2) => e1 match {  
+        case Function(_, x, e) => throw DynamicTypeError(e)
         case _ => B(equalityVal(bop, eToVal(e1), eToVal(e2)))
       }
       case Binary(bop @ (Lt|Le|Gt|Ge), e1, e2) => B(inequalityVal(bop, eToVal(e1), eToVal(e2)))
-      
       case Binary(And, e1, e2) => 
         val v1 = eToVal(e1)
         if (toBoolean(v1)) eToVal(e2) else v1
       case Binary(Or, e1, e2) =>
         val v1 = eToVal(e1)
         if (toBoolean(v1)) v1 else eToVal(e2)
-      
       case Binary(Seq, e1, e2) => eToVal(e1); eToVal(e2)
       
+      //------------
       case If(e1, e2, e3) => if (eToB(e1)) eToVal(e2) else eToVal(e3)
       
+      //------------
       case ConstDecl(x, e1, e2) => eval(extend(env, x, eToVal(e1)), e2)
       
+      //------------
       case Call(e1,e2) => eToVal(e1) match {
-        case _ if isValue(e) => e
-        //case Var(x) => //
-        
         case Function(None, x, e) => eval(extend(env, x, eToVal(e2)),e)
         case Function(Some(f), x, e) => eval(  extend(    extend(env, x, eToVal(e2))    ,f,eToVal(e1)),  e)
         case _ => throw new UnsupportedOperationException
       }
       
+      //------------
       case _ => throw new IllegalArgumentException
     }
   }

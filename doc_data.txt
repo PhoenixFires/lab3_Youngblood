@@ -1,0 +1,13 @@
+InfoKey: Producer
+InfoValue: pdfTeX-1.40.15
+InfoKey: Creator
+InfoValue: LaTeX with hyperref package
+InfoKey: ModDate
+InfoValue: D:20141016155134-07'00'
+InfoKey: PTEX.Fullbanner
+InfoValue: This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) kpathsea version 6.2.0
+InfoKey: CreationDate
+InfoValue: D:20141006202308-06'00'
+PdfID0: 485fb3d563ad4c4a82759fd1be0a3e3
+PdfID1: 95acb288b2e9a66681cd4e4e10d657b
+NumberOfPages: 10
