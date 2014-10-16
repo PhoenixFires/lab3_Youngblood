@@ -25,7 +25,7 @@ class FunctionCallSpec extends FlatSpec {
   "Call" should "handle recursive functions using big-step semantics" in {
     val f = "f"
     val x = "x"
-    val fbody = If(Binary(Eq, Var(x), N(0)), Var(x), Binary(Plus, Var(x), Call(Var(f), Binary(Minus, Var(x), N(1)))))
+    val fbody = If(Binary(Eq, Var(x), N(0)),Var(x),Binary(Plus, Var(x), Call(Var(f), Binary(Minus, Var(x), N(1)))))
     val e1 = Function(Some(f), x, fbody)
     val e2 = N(3)
     val e3 = evaluate(Call(e1, e2))

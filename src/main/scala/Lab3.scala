@@ -3,32 +3,14 @@ object Lab3 extends jsy.util.JsyApplication {
   
   /*
    * CSCI 3155: Lab 3 
-   * <Your Name>
+   * Catherine Youngblood
    * 
-   * Partner: <Your Partner's Name>
-   * Collaborators: <Any Collaborators>
+   * Partner: Tristan Hill, Abeve Tayachow
    */
 
   /*
-   * Fill in the appropriate portions above by replacing things delimited
-   * by '<'... '>'.
+   *  Rename the object above to Lab3-<your identikey> and rename the file before turning in.
    * 
-   * Replace 'YourIdentiKey' in the object name above with your IdentiKey.
-   * 
-   * Replace the 'throw new UnsupportedOperationException' expression with
-   * your code in each function.
-   * 
-   * Do not make other modifications to this template, such as
-   * - adding "extends App" or "extends Application" to your Lab object,
-   * - adding a "main" method, and
-   * - leaving any failing asserts.
-   * 
-   * Your lab will not be graded if it does not compile.
-   * 
-   * This template compiles without error. Before you submit comment out any
-   * code that does not compile or causes a failing assert.  Simply put in a
-   * 'throws new UnsupportedOperationException' as needed to get something
-   * that compiles without error.
    */
   
   type Env = Map[String, Expr]
@@ -39,6 +21,7 @@ object Lab3 extends jsy.util.JsyApplication {
     env + (x -> v)
   }
   
+  /*-----HELPER FUNCTIONS-------------------------------------------------------*/
   def toNumber(v: Expr): Double = {
     require(isValue(v))
     (v: @unchecked) match {
@@ -74,7 +57,9 @@ object Lab3 extends jsy.util.JsyApplication {
       case Function(_, _, _) => "function"
     }
   }
-
+  
+  /*----------------------------------------------------------------------------*/
+  
   /*
    * Helper function that implements the semantics of inequality
    * operators Lt, Le, Gt, and Ge on values.
@@ -101,6 +86,25 @@ object Lab3 extends jsy.util.JsyApplication {
         }
     }
   }
+  
+  def equalityVal(bop: Bop, v1: Expr, v2: Expr): Boolean = {
+    require(isValue(v1))
+	require(isValue(v2))
+	require(bop == Eq || bop == Ne)
+	(v1, v2) match {
+      case (S(s1), S(s2)) =>
+        (bop: @unchecked) match {
+          case Eq => s1 == s2
+          case Ne => s1 != s2
+        }
+      case _ =>
+        val (n1, n2) = (toNumber(v1), toNumber(v2))
+        (bop: @unchecked) match {
+          case Eq => n1 == n2
+          case Ne => n1 != n2
+        }
+    }
+  }
 
 
   /* Big-Step Interpreter with Dynamic Scoping */
@@ -110,6 +114,7 @@ object Lab3 extends jsy.util.JsyApplication {
    * strings and functions (i.e., Lab 2).  You are to welcome to
    * replace it with your code from Lab 2.
    */
+  
   def eval(env: Env, e: Expr): Expr = {
     def eToN(e: Expr): Double = toNumber(eval(env, e))
     def eToB(e: Expr): Boolean = toBoolean(eval(env, e))
@@ -134,7 +139,10 @@ object Lab3 extends jsy.util.JsyApplication {
       case Binary(Times, e1, e2) => N(eToN(e1) * eToN(e2))
       case Binary(Div, e1, e2) => N(eToN(e1) / eToN(e2))
       
-      case Binary(bop @ (Eq | Ne), e1, e2) => throw new UnsupportedOperationException
+      case Binary(bop @ (Eq | Ne), e1, e2) => e1 match { //throw new UnsupportedOperationException 
+        case Function(_, x, e) => DynamicTypeError(e); throw new UnsupportedOperationException
+        case _ => B(equalityVal(bop, eToVal(e1), eToVal(e2)))
+      }
       case Binary(bop @ (Lt|Le|Gt|Ge), e1, e2) => B(inequalityVal(bop, eToVal(e1), eToVal(e2)))
       
       case Binary(And, e1, e2) => 
@@ -150,7 +158,16 @@ object Lab3 extends jsy.util.JsyApplication {
       
       case ConstDecl(x, e1, e2) => eval(extend(env, x, eToVal(e1)), e2)
       
-      case _ => throw new UnsupportedOperationException
+      case Call(e1,e2) => eToVal(e1) match {
+        case _ if isValue(e) => e
+        //case Var(x) => //
+        
+        case Function(None, x, e) => eval(extend(env, x, eToVal(e2)),e)
+        case Function(Some(f), x, e) => eval(  extend(    extend(env, x, eToVal(e2))    ,f,eToVal(e1)),  e)
+        case _ => throw new UnsupportedOperationException
+      }
+      
+      case _ => throw new IllegalArgumentException
     }
   }
     

@@ -82,7 +82,7 @@ You can also run tests via
     
 For running the autograder from the Windows command line, cd to your lab3 folder then type:
 
-	sbt "program lab3-grader" run
+	sbt "project lab3-grader" run
 	
 This will run the autograder packaged in the original zip file. This autograder is not included in this repository.
 

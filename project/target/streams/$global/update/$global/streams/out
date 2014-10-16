@@ -1371,7 +1371,7 @@
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.scala-sbt#apply-macro;0.13.6!apply-macro.jar[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.scala-lang#jline;2.10.4!jline.jar[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.fusesource.jansi#jansi;1.4!jansi.jar[0m
-[0m[[0mdebug[0m] [0m:: resolution report :: resolve 4690ms :: artifacts dl 70ms[0m
+[0m[[0mdebug[0m] [0m:: resolution report :: resolve 3820ms :: artifacts dl 120ms[0m
 [0m[[0mdebug[0m] [0m	report for default#lab3-build;0.1-SNAPSHOT compile produced in C:\_prog\SCALA\eclipse\workspace\lab3\project\target\resolution-cache\reports\default-lab3-build-compile.xml[0m
 [0m[[0mdebug[0m] [0m	report for default#lab3-build;0.1-SNAPSHOT runtime produced in C:\_prog\SCALA\eclipse\workspace\lab3\project\target\resolution-cache\reports\default-lab3-build-runtime.xml[0m
 [0m[[0mdebug[0m] [0m	report for default#lab3-build;0.1-SNAPSHOT test produced in C:\_prog\SCALA\eclipse\workspace\lab3\project\target\resolution-cache\reports\default-lab3-build-test.xml[0m
@@ -1385,5 +1385,5 @@
 [0m[[0mdebug[0m] [0m	report for default#lab3-build;0.1-SNAPSHOT docs produced in C:\_prog\SCALA\eclipse\workspace\lab3\project\target\resolution-cache\reports\default-lab3-build-docs.xml[0m
 [0m[[0mdebug[0m] [0m	report for default#lab3-build;0.1-SNAPSHOT pom produced in C:\_prog\SCALA\eclipse\workspace\lab3\project\target\resolution-cache\reports\default-lab3-build-pom.xml[0m
 [0m[[0mdebug[0m] [0m	report for default#lab3-build;0.1-SNAPSHOT scala-tool produced in C:\_prog\SCALA\eclipse\workspace\lab3\project\target\resolution-cache\reports\default-lab3-build-scala-tool.xml[0m
-[0m[[0mdebug[0m] [0m	resolve done (4690ms resolve - 70ms download)[0m
+[0m[[0mdebug[0m] [0m	resolve done (3820ms resolve - 120ms download)[0m
 [0m[[0minfo[0m] [0mDone updating.[0m

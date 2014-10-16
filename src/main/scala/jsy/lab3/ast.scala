@@ -55,6 +55,7 @@ object ast {
   
   /* Intraprocedural Control */
   case class If(e1: Expr, e2: Expr, e3: Expr) extends Expr
+  //if e1 is true, calculate e2, else calculate e3
   
   /* I/O */
   case class Print(e1: Expr) extends Expr 
