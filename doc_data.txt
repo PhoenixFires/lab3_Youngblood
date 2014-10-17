@@ -1,13 +1,44 @@
-InfoKey: Producer
-InfoValue: pdfTeX-1.40.15
 InfoKey: Creator
-InfoValue: LaTeX with hyperref package
+InfoValue: pdftk 1.41 - www.pdftk.com
+InfoKey: Producer
+InfoValue: itext-paulo-155 (itextpdf.sf.net-lowagie.com)
 InfoKey: ModDate
-InfoValue: D:20141016155134-07'00'
-InfoKey: PTEX.Fullbanner
-InfoValue: This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) kpathsea version 6.2.0
+InfoValue: D:20141016210105-07'00'
 InfoKey: CreationDate
-InfoValue: D:20141006202308-06'00'
-PdfID0: 485fb3d563ad4c4a82759fd1be0a3e3
-PdfID1: 95acb288b2e9a66681cd4e4e10d657b
+InfoValue: D:20141016145251-07'00'
+PdfID0: 6f76d5d6f875c82c774f14ada7ba2a0
+PdfID1: 3157dcec6060ecbb82ee70b9652fea2
 NumberOfPages: 10
+BookmarkTitle: Prob 1
+BookmarkLevel: 1
+BookmarkPageNumber: 2
+BookmarkTitle: Prob 2
+BookmarkLevel: 1
+BookmarkPageNumber: 7
+BookmarkTitle: Prob 3-4
+BookmarkLevel: 1
+BookmarkPageNumber: 8
+BookmarkTitle: Fig 1-2
+BookmarkLevel: 1
+BookmarkPageNumber: 2
+BookmarkTitle: Fig 3
+BookmarkLevel: 1
+BookmarkPageNumber: 3
+BookmarkTitle: Fig 4
+BookmarkLevel: 1
+BookmarkPageNumber: 4
+BookmarkTitle: Fig 5
+BookmarkLevel: 1
+BookmarkPageNumber: 5
+BookmarkTitle: Fig 6
+BookmarkLevel: 1
+BookmarkPageNumber: 5
+BookmarkTitle: Fig 7
+BookmarkLevel: 1
+BookmarkPageNumber: 9
+BookmarkTitle: Fig 8
+BookmarkLevel: 1
+BookmarkPageNumber: 10
+BookmarkTitle: Fig 9
+BookmarkLevel: 1
+BookmarkPageNumber: 10
